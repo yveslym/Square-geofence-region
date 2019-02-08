@@ -24,8 +24,9 @@ extension RegionProtocol{
     /// Method to check wether the user user walk in or out of the square region
     func updateRegion(region: CKSquareRegion, location: CLLocation){
 
+        // check if the current location is within the square region
         if (region.contains(location.coordinate)){
-            print( " inside the square")
+
 
             let defaults = UserDefaults.standard
             if let inSide = defaults.value(forKey: "inside") as? Bool {
@@ -42,9 +43,8 @@ extension RegionProtocol{
             }
 
         }
-
         else{
-            print("out side the square")
+
             let defaults = UserDefaults.standard
             if let inSide = defaults.value(forKey: "inside") as? Bool {
                 if inSide{
@@ -52,7 +52,6 @@ extension RegionProtocol{
                     defaults.set(false, forKey: "inside")
                 }
             }
-
             else{
                 didExitRegion(region: region)
                 defaults.set(false, forKey: "inside")
