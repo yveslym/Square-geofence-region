@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2014AF7C220E058F00890F8B /* Square geofence region.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Square geofence region.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2014AF7C220E058F00890F8B /* SquareRegion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareRegion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2014AF7F220E058F00890F8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2014AF81220E058F00890F8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2014AF84220E058F00890F8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		2014AF73220E058F00890F8B = {
 			isa = PBXGroup;
 			children = (
-				2014AF7E220E058F00890F8B /* Square geofence region */,
+				2014AF7E220E058F00890F8B /* SquareRegion */,
 				2014AF7D220E058F00890F8B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		2014AF7D220E058F00890F8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2014AF7C220E058F00890F8B /* Square geofence region.app */,
+				2014AF7C220E058F00890F8B /* SquareRegion.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2014AF7E220E058F00890F8B /* Square geofence region */ = {
+		2014AF7E220E058F00890F8B /* SquareRegion */ = {
 			isa = PBXGroup;
 			children = (
 				2014AF92220E067900890F8B /* Models */,
@@ -69,7 +69,7 @@
 				2014AF88220E059200890F8B /* LaunchScreen.storyboard */,
 				2014AF8B220E059200890F8B /* Info.plist */,
 			);
-			path = "Square geofence region";
+			path = SquareRegion;
 			sourceTree = "<group>";
 		};
 		2014AF91220E065F00890F8B /* Protocol */ = {
@@ -93,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2014AF7B220E058F00890F8B /* Square geofence region */ = {
+		2014AF7B220E058F00890F8B /* SquareRegion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2014AF8E220E059200890F8B /* Build configuration list for PBXNativeTarget "Square geofence region" */;
+			buildConfigurationList = 2014AF8E220E059200890F8B /* Build configuration list for PBXNativeTarget "SquareRegion" */;
 			buildPhases = (
 				2014AF78220E058F00890F8B /* Sources */,
 				2014AF79220E058F00890F8B /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = "Square geofence region";
+			name = SquareRegion;
 			productName = "Square geofence region";
-			productReference = 2014AF7C220E058F00890F8B /* Square geofence region.app */;
+			productReference = 2014AF7C220E058F00890F8B /* SquareRegion.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -126,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2014AF77220E058F00890F8B /* Build configuration list for PBXProject "Square geofence region" */;
+			buildConfigurationList = 2014AF77220E058F00890F8B /* Build configuration list for PBXProject "SquareRegion" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2014AF7B220E058F00890F8B /* Square geofence region */,
+				2014AF7B220E058F00890F8B /* SquareRegion */,
 			);
 		};
 /* End PBXProject section */
@@ -314,14 +314,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7R433H2CL;
-				INFOPLIST_FILE = "Square geofence region/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SquareRegion/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Square geofence region/Models/Square geofence region-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Models/Square geofence region-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -335,14 +335,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7R433H2CL;
-				INFOPLIST_FILE = "Square geofence region/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SquareRegion/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Square geofence region/Models/Square geofence region-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Models/Square geofence region-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -351,7 +351,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2014AF77220E058F00890F8B /* Build configuration list for PBXProject "Square geofence region" */ = {
+		2014AF77220E058F00890F8B /* Build configuration list for PBXProject "SquareRegion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2014AF8C220E059200890F8B /* Debug */,
@@ -360,7 +360,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2014AF8E220E059200890F8B /* Build configuration list for PBXNativeTarget "Square geofence region" */ = {
+		2014AF8E220E059200890F8B /* Build configuration list for PBXNativeTarget "SquareRegion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2014AF8F220E059200890F8B /* Debug */,
