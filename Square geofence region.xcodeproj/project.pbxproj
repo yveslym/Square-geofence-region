@@ -12,6 +12,8 @@
 		2014AF85220E058F00890F8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2014AF83220E058F00890F8B /* Main.storyboard */; };
 		2014AF87220E059200890F8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2014AF86220E059200890F8B /* Assets.xcassets */; };
 		2014AF8A220E059200890F8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2014AF88220E059200890F8B /* LaunchScreen.storyboard */; };
+		2014AF96220E06BF00890F8B /* CKSquareRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014AF94220E06BF00890F8B /* CKSquareRegion.m */; };
+		2014AF98220E076E00890F8B /* RegionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014AF97220E076E00890F8B /* RegionProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		2014AF86220E059200890F8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2014AF89220E059200890F8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2014AF8B220E059200890F8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2014AF93220E06BE00890F8B /* Square geofence region-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Square geofence region-Bridging-Header.h"; sourceTree = "<group>"; };
+		2014AF94220E06BF00890F8B /* CKSquareRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSquareRegion.m; sourceTree = "<group>"; };
+		2014AF95220E06BF00890F8B /* CKSquareRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSquareRegion.h; sourceTree = "<group>"; };
+		2014AF97220E076E00890F8B /* RegionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,8 @@
 		2014AF7E220E058F00890F8B /* Square geofence region */ = {
 			isa = PBXGroup;
 			children = (
+				2014AF92220E067900890F8B /* Models */,
+				2014AF91220E065F00890F8B /* Protocol */,
 				2014AF7F220E058F00890F8B /* AppDelegate.swift */,
 				2014AF81220E058F00890F8B /* ViewController.swift */,
 				2014AF83220E058F00890F8B /* Main.storyboard */,
@@ -62,6 +70,24 @@
 				2014AF8B220E059200890F8B /* Info.plist */,
 			);
 			path = "Square geofence region";
+			sourceTree = "<group>";
+		};
+		2014AF91220E065F00890F8B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2014AF97220E076E00890F8B /* RegionProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		2014AF92220E067900890F8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2014AF95220E06BF00890F8B /* CKSquareRegion.h */,
+				2014AF94220E06BF00890F8B /* CKSquareRegion.m */,
+				2014AF93220E06BE00890F8B /* Square geofence region-Bridging-Header.h */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +122,7 @@
 				TargetAttributes = {
 					2014AF7B220E058F00890F8B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -135,8 +162,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2014AF98220E076E00890F8B /* RegionProtocol.swift in Sources */,
 				2014AF82220E058F00890F8B /* ViewController.swift in Sources */,
 				2014AF80220E058F00890F8B /* AppDelegate.swift in Sources */,
+				2014AF96220E06BF00890F8B /* CKSquareRegion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7R433H2CL;
 				INFOPLIST_FILE = "Square geofence region/Info.plist";
@@ -291,6 +321,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Square geofence region/Models/Square geofence region-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -300,6 +332,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7R433H2CL;
 				INFOPLIST_FILE = "Square geofence region/Info.plist";
@@ -309,6 +342,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Square geofence region/Models/Square geofence region-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
