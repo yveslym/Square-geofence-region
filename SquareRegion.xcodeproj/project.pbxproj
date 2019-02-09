@@ -60,6 +60,10 @@
 		2014AF7E220E058F00890F8B /* SquareRegion */ = {
 			isa = PBXGroup;
 			children = (
+				2014AF95220E06BF00890F8B /* CKSquareRegion.h */,
+				2014AF94220E06BF00890F8B /* CKSquareRegion.m */,
+				2014AF93220E06BE00890F8B /* Square geofence region-Bridging-Header.h */,
+				2014AF97220E076E00890F8B /* RegionProtocol.swift */,
 				2014AF92220E067900890F8B /* Models */,
 				2014AF91220E065F00890F8B /* Protocol */,
 				2014AF7F220E058F00890F8B /* AppDelegate.swift */,
@@ -75,7 +79,6 @@
 		2014AF91220E065F00890F8B /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				2014AF97220E076E00890F8B /* RegionProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -83,9 +86,6 @@
 		2014AF92220E067900890F8B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2014AF95220E06BF00890F8B /* CKSquareRegion.h */,
-				2014AF94220E06BF00890F8B /* CKSquareRegion.m */,
-				2014AF93220E06BE00890F8B /* Square geofence region-Bridging-Header.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Models/Square geofence region-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Square geofence region-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -344,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Models/Square geofence region-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Square geofence region-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
