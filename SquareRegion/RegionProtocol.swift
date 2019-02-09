@@ -7,7 +7,7 @@
 //
 import Foundation
 
-protocol RegionProtocol {
+public protocol RegionProtocol {
 
 
     func updateRegion(region: CKSquareRegion, location: CLLocation)
@@ -16,7 +16,7 @@ protocol RegionProtocol {
     func didExitRegion(region: CKSquareRegion)
 }
 
-extension RegionProtocol{
+public extension RegionProtocol{
 
     //    TODO: get the location and check weither the user was already in or out, If the user was marked in the region, when exited mark the user out of the region, also, keep track of user when they still inside or outside
 
