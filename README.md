@@ -7,7 +7,9 @@ square region geofence is a lightweight geofence pod that allows you to cfreate 
 ## Demo
 
 
-![ima](https://imgur.com/mpPMBfw.gif)
+
+![demo](https://i.imgur.com/oIOMh5s.gif)
+
 
 
 ## Installing with CocoaPods
