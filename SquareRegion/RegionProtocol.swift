@@ -70,11 +70,12 @@ public extension RegionProtocol{
     }
 
     /// Method to add new region to monitor
-    func addRegionToMonitor(region: CKSquareRegion){
-        // TODO: - retrieve all the identifier from user default
+    func addRegionToMonitor(region: CKSquareRegion) {
+        // TODO: - retrieve all the region from user default
         //       - if not exist create a new list
-        // TODO: add new the identifier to the list of identifiers
+        // TODO: add new the region to the list of identifiers
         let defaults = UserDefaults.standard
+
         if var regions = defaults.value(forKey: "regions") as? [CKSquareRegion]{
             regions.append(region)
             defaults.set(regions, forKey: "regions")
