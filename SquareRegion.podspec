@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SquareRegion'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'powerful  and efficient, lightweight iOS square region location for Geofence, alternative to circular region'
  s.swift_version    = '4.2'
   s.description      = <<-DESC
@@ -13,6 +13,6 @@ square region geofence is a lightweight geofence pod that allows you to cfreate 
   s.source           = { :git => 'https://github.com/yveslym/Square-geofence-region.git', :tag => s.version.to_s }
  
   s.ios.deployment_target = '10.0'
-  s.source_files = 'SquareRegion/*'
+  s.source_files = 'SquareRegion/*.{swift,h,m}'
  
 end
