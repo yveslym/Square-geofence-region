@@ -25,14 +25,16 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <UIKit/UIKit.h>
 
-@interface CKSquareRegion : NSObject
+@interface CKSquareRegion : NSCoder
 
 // Center coordinate of the square region
 @property (nonatomic, readonly) CLLocationCoordinate2D center;
 
 // String identifier or name for the region
 @property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) CLLocationDistance sideLengh;
 
 // Side length is the length of a side of the square. This is assumed to be in meters.
 - (id)initRegionWithCenter:(CLLocationCoordinate2D)center sideLength:(CLLocationDistance)sideLength identifier:(NSString *)identifier;

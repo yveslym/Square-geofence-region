@@ -69,19 +69,37 @@ public extension RegionProtocol{
         }
     }
 
+    private func retrieveRegions() -> [SquaredRegion]?{
+        if let data = UserDefaults.standard.value(forKey: "regionData") as? Data{
+            do{
+                let regions = try JSONDecoder().decode([SquaredRegion].self, from: data)
+                return regions
+            }
+            catch{
+                return nil
+            }
+        }
+        return nil
+    }
     /// Method to add new region to monitor
     func addRegionToMonitor(region: CKSquareRegion) {
         // TODO: - retrieve all the region from user default
         //       - if not exist create a new list
         // TODO: add new the region to the list of identifiers
-        let defaults = UserDefaults.standard
+//        let defaults = UserDefaults.standard
+//
+//        if var regions = defaults.value(forKey: "regions") as? [CKSquareRegion]{
+//            regions.append(region)
+//            defaults.set(regions, forKey: "regions")
+//        }
+//        else{
+//            defaults.set([region], forKey: "regions")
+//        }
+        if var regions = retrieveRegions(){
+            //let newRegion = SquaredRegion
+            regions.append(region as! SquaredRegion)
 
-        if var regions = defaults.value(forKey: "regions") as? [CKSquareRegion]{
-            regions.append(region)
-            defaults.set(regions, forKey: "regions")
-        }
-        else{
-            defaults.set([region], forKey: "regions")
+            let data = try! JSONEncoder().encode(regions)
         }
     }
 
@@ -102,3 +120,18 @@ public extension RegionProtocol{
     }
 }
 
+public class SquaredRegion: CKSquareRegion, Codable{
+    override init!(regionWithCenter center: CLLocationCoordinate2D, sideLength: CLLocationDistance, identifier: String!) {
+        super.init(regionWithCenter: center, sideLength: sideLength, identifier: identifier)
+    }
+    public init(region: CKSquareRegion) {
+
+        
+        super.init(regionWithCenter: region.center, sideLength: region.sideLengh, identifier: region.identifier)
+    }
+}
+extension CKSquareRegion{
+    public convenience init(ckregion: SquaredRegion) {
+        self.init(regionWithCenter: ckregion.center, sideLength: ckregion.sideLengh, identifier: ckregion.identifier)
+    }
+}
