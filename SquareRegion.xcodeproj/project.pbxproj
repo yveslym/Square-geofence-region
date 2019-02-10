@@ -14,6 +14,7 @@
 		2014AF8A220E059200890F8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2014AF88220E059200890F8B /* LaunchScreen.storyboard */; };
 		2014AF96220E06BF00890F8B /* CKSquareRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014AF94220E06BF00890F8B /* CKSquareRegion.m */; };
 		2014AF98220E076E00890F8B /* RegionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014AF97220E076E00890F8B /* RegionProtocol.swift */; };
+		206AF09C220FAB53006935C3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206AF09B220FAB53006935C3 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2014AF94220E06BF00890F8B /* CKSquareRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSquareRegion.m; sourceTree = "<group>"; };
 		2014AF95220E06BF00890F8B /* CKSquareRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSquareRegion.h; sourceTree = "<group>"; };
 		2014AF97220E076E00890F8B /* RegionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProtocol.swift; sourceTree = "<group>"; };
+		206AF09B220FAB53006935C3 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				2014AF86220E059200890F8B /* Assets.xcassets */,
 				2014AF88220E059200890F8B /* LaunchScreen.storyboard */,
 				2014AF8B220E059200890F8B /* Info.plist */,
+				206AF09B220FAB53006935C3 /* Helpers.swift */,
 			);
 			path = SquareRegion;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				2014AF98220E076E00890F8B /* RegionProtocol.swift in Sources */,
 				2014AF82220E058F00890F8B /* ViewController.swift in Sources */,
 				2014AF80220E058F00890F8B /* AppDelegate.swift in Sources */,
+				206AF09C220FAB53006935C3 /* Helpers.swift in Sources */,
 				2014AF96220E06BF00890F8B /* CKSquareRegion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

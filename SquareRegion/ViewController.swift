@@ -21,9 +21,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+         setupLocation()
         setupMap()
         setupData()
-        setupLocation()
+
 
     }
 
@@ -36,7 +37,8 @@ class ViewController: UIViewController {
         }
             // authorization were denied
         else if CLLocationManager.authorizationStatus() == .denied {
-            showAlert("Location services were previously denied. Please enable location services for this app in Settings.")
+
+            Helpers.showAlert("Location services were previously denied. Please enable location services for this app in Settings.", sender: self)
         }
             // we do have authorization
         else if CLLocationManager.authorizationStatus() == .authorizedAlways {
@@ -44,25 +46,20 @@ class ViewController: UIViewController {
         }
     }
 
-    // MARK: - Helpers
 
-    func showAlert(_ title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion: nil)
-
-    }
 
 
     func setupMap(){
 
         // setup mapView
-        mapView = MKMapView()
+        mapView = MKMapView.init(frame: view.frame)
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        view.addSubview(mapView)
+        mapView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1).isActive = true
+         mapView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+
     }
     func setupLocation(){
         // setup locationManager
@@ -70,6 +67,7 @@ class ViewController: UIViewController {
         locationManager.delegate = self;
         locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
         regionDelegate = self
     }
 
@@ -77,14 +75,76 @@ class ViewController: UIViewController {
 
     func setupData(){
 
+        // Make anotation
+
+        let steakHouseCoordinate = CLLocationCoordinate2D.init(latitude:  37.788381, longitude:  -122.408937)
+
+        let bankCoordinate = CLLocationCoordinate2D.init(latitude:  37.788891, longitude:  -122.408790)
+
+        let nailSalonCoordinate = CLLocationCoordinate2D.init(latitude: 37.789302, longitude: -122.408985)
+
+        // setup regions
+        let steakHouseRegion = CKSquareRegion.init(regionWithCenter: steakHouseCoordinate, sideLength: 0.035, identifier: "steakHouse")
+        let bankRegion = CKSquareRegion.init(regionWithCenter: bankCoordinate, sideLength: 0.035, identifier: "bank")
+        let nailSalonRegion =  CKSquareRegion.init(regionWithCenter: nailSalonCoordinate, sideLength: 0.025, identifier: "nailSalon")
+
+        // add region to monitor
+        regionDelegate.addRegionToMonitor(region: steakHouseRegion!)
+        regionDelegate.addRegionToMonitor(region: bankRegion!)
+        regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
+
+
+        let steakHousePoint = [
+            CLLocationCoordinate2D.init(latitude:  37.788477, longitude:  -122.409054),
+            CLLocationCoordinate2D.init(latitude: 37.788503, longitude:  -122.408864),
+            CLLocationCoordinate2D.init(latitude:  37.788324, longitude: -122.408806),
+            CLLocationCoordinate2D.init(latitude:  37.788301, longitude:  -122.409003)]
+        let bankPoint = [
+            CLLocationCoordinate2D.init(latitude:  37.788854, longitude: -122.408652),
+            CLLocationCoordinate2D.init(latitude: 37.788941, longitude:  -122.408683),
+            CLLocationCoordinate2D.init(latitude: 37.788917, longitude: -122.408880),
+            CLLocationCoordinate2D.init(latitude: 37.788826, longitude: -122.408865)
+                        ]
+        let nailSalonPoint = [
+            CLLocationCoordinate2D.init(latitude:  37.789337, longitude: -122.409075),
+            CLLocationCoordinate2D.init(latitude:  37.789349, longitude: -122.408925),
+            CLLocationCoordinate2D.init(latitude:  37.789261, longitude:  -122.408875),
+            CLLocationCoordinate2D.init(latitude:  37.789247, longitude: -122.409059)]
+
+        let bankPolygon = MKPolygon.init(coordinates: bankPoint, count: 4)
+        let steakHousePolygon = MKPolygon.init(coordinates: steakHousePoint, count: 4)
+        let nailSalonPolygon = MKPolygon.init(coordinates: nailSalonPoint, count: 4)
+
+        mapView.addOverlays([bankPolygon,nailSalonPolygon,steakHousePolygon])
+
+
+        // setup anotation
+        let steakHouseAnnotation = MKPointAnnotation()
+        steakHouseAnnotation.coordinate = steakHouseCoordinate
+        steakHouseAnnotation.title = "SteakHouse"
+
+        let bankAnnotation = MKPointAnnotation()
+        bankAnnotation.coordinate = bankCoordinate
+        bankAnnotation.title = "Bank of America"
+
+        let nailSalonAnnotation = MKPointAnnotation()
+        nailSalonAnnotation.coordinate = nailSalonCoordinate
+        nailSalonAnnotation.title = "nails Salon"
+
+        mapView.addAnnotations([steakHouseAnnotation,bankAnnotation,nailSalonAnnotation])
+
     }
-
-
-
 }
 
 extension ViewController: MKMapViewDelegate{
 
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        let polygonView = MKPolygonRenderer(overlay: overlay)
+        polygonView.fillColor = UIColor(red: 0, green: 0.847, blue: 1, alpha: 0.25)
+
+        return polygonView
+    }
 }
 
 extension ViewController: CLLocationManagerDelegate{
