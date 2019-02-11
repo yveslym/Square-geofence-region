@@ -91,12 +91,13 @@ class ViewController: UIViewController {
         let bankRegion = CKSquareRegion.init(regionWithCenter: bankCoordinate, sideLength: 0.025, identifier: "bank")
         let nailSalonRegion =  CKSquareRegion.init(regionWithCenter: nailSalonCoordinate, sideLength: 0.025, identifier: "nailSalon")
 
+
         // add region to monitor
-//        regionDelegate.addRegionToMonitor(region: steakHouseRegion!)
-//        regionDelegate.addRegionToMonitor(region: bankRegion!)
-//        regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
+        regionDelegate.addRegionToMonitor(region: steakHouseRegion!)
+        regionDelegate.addRegionToMonitor(region: bankRegion!)
+        regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
 
-
+regionDelegate.removeRegionFromMonitor(identifier: "steakHouse")
         let steakHousePoint = [
             CLLocationCoordinate2D.init(latitude:  37.788477, longitude:  -122.409054),
             CLLocationCoordinate2D.init(latitude: 37.788503, longitude:  -122.408864),

@@ -30,8 +30,8 @@ public extension RegionProtocol{
 
         if let regions = retrieveRegions(){
 
-            regions.forEach { (region) in
-
+//            regions.forEach { (region) in
+            for (_, region) in regions {
                 let RegionLocation = CLLocation.init(latitude: region.latitude, longitude: region.longitude)
                 let distance = location.distance(from: RegionLocation)
                 print("\(distance.rounded()) m to \(region.identifierR)")
@@ -78,10 +78,11 @@ public extension RegionProtocol{
          print("\n ------------------------------")
     }
 
-    private func retrieveRegions() -> [SquaredRegion]?{
+    private func retrieveRegions() -> [String:SquaredRegion]?{
         if let data = UserDefaults.standard.value(forKey: "regionData") as? Data{
             do{
-                let regions = try JSONDecoder().decode([SquaredRegion].self, from: data)
+                let regions = try JSONDecoder().decode([String:SquaredRegion].self, from: data)
+
                 return regions
             }
             catch{
@@ -98,31 +99,31 @@ public extension RegionProtocol{
          let newRegion = SquaredRegion.init(region: region)
         if var regions = retrieveRegions(){
 
-            regions.append(newRegion)
+            regions[newRegion.identifierR] = newRegion
 
             let data =  try! JSONEncoder().encode(regions)
             UserDefaults.standard.set( data, forKey: "regionData")
         }
         else {
             let newRegion = SquaredRegion.init(region: region)
-            let data = try! JSONEncoder().encode([newRegion])
+
+            let data = try! JSONEncoder().encode([newRegion.identifierR:newRegion])
             UserDefaults.standard.set( data, forKey: "regionData")
         }
     }
 
     /// Method to remove region from monitoring
-    func removeRegionFromMonitor(identifier: String){
+    func removeRegionFromMonitor(identifier: String) {
 
         // TODO: - Retrieve all region from userDefault
         //       - remove the region that correspond to the identifier
 
-        if var regions = UserDefaults.standard.value(forKey: "regions") as? [CKSquareRegion]{
+        if var regions = retrieveRegions(){
 
-            if let index = regions.firstIndex(where: {$0.identifier == identifier}){
-                regions.remove(at: index)
-                UserDefaults.standard.set(regions, forKey: "Regions")
-            }
+            _ = regions.removeValue(forKey: identifier)
 
+            let data =  try! JSONEncoder().encode(regions)
+            UserDefaults.standard.set( data, forKey: "regionData")
         }
     }
 }
