@@ -48,7 +48,7 @@ public extension RegionProtocol{
                     if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
 
                         if !inSide{
-                            didEnterRegion(region: region)
+                            didEnterRegion(region: sqRegion)
                             defaults.set(true, forKey: sqRegion.identifier)
                         }
                     }
@@ -64,7 +64,7 @@ public extension RegionProtocol{
                     let defaults = UserDefaults.standard
                     if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
                         if inSide{
-                            didExitRegion(region: region)
+                            didExitRegion(region: sqRegion)
                             defaults.set(false, forKey: sqRegion.identifier)
                         }
                     }
@@ -78,10 +78,10 @@ public extension RegionProtocol{
          print("\n ------------------------------")
     }
 
-    private func retrieveRegions() -> [String:SquaredRegion]?{
+    private func retrieveRegions() -> [String:CodableSquareRegion]?{
         if let data = UserDefaults.standard.value(forKey: "regionData") as? Data{
             do{
-                let regions = try JSONDecoder().decode([String:SquaredRegion].self, from: data)
+                let regions = try JSONDecoder().decode([String:CodableSquareRegion].self, from: data)
 
                 return regions
             }
@@ -96,7 +96,7 @@ public extension RegionProtocol{
         // TODO: - retrieve all the region from user default
         //       - if not exist create a new list
         // TODO: add new the region to the list of identifiers
-         let newRegion = SquaredRegion.init(region: region)
+         let newRegion = CodableSquareRegion.init(region: region)
         if var regions = retrieveRegions(){
 
             regions[newRegion.identifierR] = newRegion
@@ -105,7 +105,7 @@ public extension RegionProtocol{
             UserDefaults.standard.set( data, forKey: "regionData")
         }
         else {
-            let newRegion = SquaredRegion.init(region: region)
+            let newRegion = CodableSquareRegion.init(region: region)
 
             let data = try! JSONEncoder().encode([newRegion.identifierR:newRegion])
             UserDefaults.standard.set( data, forKey: "regionData")
@@ -128,7 +128,7 @@ public extension RegionProtocol{
     }
 }
 
-public class SquaredRegion: CKSquareRegion, Codable{
+public class CodableSquareRegion: CKSquareRegion, Codable{
 
     public var longitude: Double
     public var latitude: Double
@@ -157,7 +157,7 @@ public class SquaredRegion: CKSquareRegion, Codable{
 }
 
 extension CKSquareRegion{
-    public convenience init(ckregion: SquaredRegion) {
+    public convenience init(ckregion: CodableSquareRegion) {
        let center = CLLocationCoordinate2D.init(latitude: ckregion.latitude, longitude: ckregion.longitude)
         self.init(regionWithCenter: center, sideLength: ckregion.sideLenghR, identifier: ckregion.identifierR)
     }

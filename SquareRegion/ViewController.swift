@@ -168,19 +168,19 @@ extension ViewController: CLLocationManagerDelegate{
 extension ViewController: RegionProtocol{
 
     func didEnterRegion(region: CKSquareRegion) {
-        let reg = region as! SquaredRegion
-        let message = "welcome to \(reg.identifierR )"
+        let reg = region as! CodableSquareRegion
+        let message = "welcome to \(region.identifier)"
         Helpers.showAlert("enter region", sender: self, message: message)
 
-        print("*** enter \(reg.identifierR) ****")
+        print("*** enter \(region.identifier) ****")
     }
 
     func didExitRegion(region: CKSquareRegion) {
 
-         let reg = region as! SquaredRegion
-        let message = "\(reg.identifierR) was happy to see you too, Bye"
+         let reg = region as! CodableSquareRegion
+        let message = "\(region.identifier) was happy to see you too, Bye"
         Helpers.showAlert("leave region", sender: self, message: message)
-         print("*** leave \(reg.identifierR) ****")
+         print("*** leave \(region.identifier) ****")
 
     }
 
