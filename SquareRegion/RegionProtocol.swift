@@ -34,17 +34,17 @@ public extension RegionProtocol{
 
                 let RegionLocation = CLLocation.init(latitude: region.latitude, longitude: region.longitude)
                 let distance = location.distance(from: RegionLocation)
-                print("\(distance.rounded())m to \(region.identifierR)")
+                print("\(distance.rounded()) m to \(region.identifierR)")
 
                 let sqRegion = CKSquareRegion.init(ckregion: region)
 
                 // enter in the region
-                if sqRegion.contains(location.coordinate){
+                if sqRegion.contains(location.coordinate) && distance < (sqRegion.sideLengh * 1000){
 
 
                     let defaults = UserDefaults.standard
 
-                    // retrieve the last state
+                    // retrieve the last status
                     if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
 
                         if !inSide{
@@ -54,7 +54,7 @@ public extension RegionProtocol{
                     }
 
                     else{
-                        //didEnterRegion(region: region)
+
                         defaults.set(true, forKey: sqRegion.identifier)
                     }
 
@@ -69,7 +69,7 @@ public extension RegionProtocol{
                         }
                     }
                     else{
-                        //didExitRegion(region: region)
+
                         defaults.set(false, forKey: sqRegion.identifier)
                     }
                 }

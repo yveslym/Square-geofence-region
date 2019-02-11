@@ -170,6 +170,8 @@ extension ViewController: RegionProtocol{
         let reg = region as! SquaredRegion
         let message = "welcome to \(reg.identifierR )"
         Helpers.showAlert("enter region", sender: self, message: message)
+
+        print("*** enter \(reg.identifierR) ****")
     }
 
     func didExitRegion(region: CKSquareRegion) {
@@ -177,6 +179,7 @@ extension ViewController: RegionProtocol{
          let reg = region as! SquaredRegion
         let message = "\(reg.identifierR) was happy to see you too, Bye"
         Helpers.showAlert("leave region", sender: self, message: message)
+         print("*** leave \(reg.identifierR) ****")
 
     }
 

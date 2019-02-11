@@ -31,6 +31,7 @@
 		2014AF97220E076E00890F8B /* RegionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProtocol.swift; sourceTree = "<group>"; };
 		206AF09B220FAB53006935C3 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		206AF09D22112873006935C3 /* LocationPostStreet.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationPostStreet.gpx; sourceTree = "<group>"; };
+		206AF09E22122F1F006935C3 /* LocationSutter.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationSutter.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +78,7 @@
 				2014AF8B220E059200890F8B /* Info.plist */,
 				206AF09B220FAB53006935C3 /* Helpers.swift */,
 				206AF09D22112873006935C3 /* LocationPostStreet.gpx */,
+				206AF09E22122F1F006935C3 /* LocationSutter.gpx */,
 			);
 			path = SquareRegion;
 			sourceTree = "<group>";
