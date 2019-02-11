@@ -97,7 +97,6 @@ class ViewController: UIViewController {
         regionDelegate.addRegionToMonitor(region: bankRegion!)
         regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
 
-regionDelegate.removeRegionFromMonitor(identifier: "steakHouse")
         let steakHousePoint = [
             CLLocationCoordinate2D.init(latitude:  37.788477, longitude:  -122.409054),
             CLLocationCoordinate2D.init(latitude: 37.788503, longitude:  -122.408864),
@@ -136,13 +135,6 @@ regionDelegate.removeRegionFromMonitor(identifier: "steakHouse")
         nailSalonAnnotation.title = "nails Salon"
 
         mapView.addAnnotations([steakHouseAnnotation,bankAnnotation,nailSalonAnnotation])
-
-            // add location to monitor
-//          regionDelegate.addRegionToMonitor(region: steakHouseRegion!)
-//          regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
-//          regionDelegate.addRegionToMonitor(region: bankRegion!)
-
-
     }
 }
 
@@ -168,19 +160,19 @@ extension ViewController: CLLocationManagerDelegate{
 extension ViewController: RegionProtocol{
 
     func didEnterRegion(region: CKSquareRegion) {
-        let reg = region as! CodableSquareRegion
-        let message = "welcome to \(region.identifier)"
+
+        let message = "welcome to \(region.identifier ?? "")"
         Helpers.showAlert("enter region", sender: self, message: message)
 
-        print("*** enter \(region.identifier) ****")
+        print("*** enter \(region.identifier ?? "") ****")
     }
 
     func didExitRegion(region: CKSquareRegion) {
 
-         let reg = region as! CodableSquareRegion
-        let message = "\(region.identifier) was happy to see you too, Bye"
+
+        let message = "The \(region.identifier  ?? "") was happy to see you too, Bye"
         Helpers.showAlert("leave region", sender: self, message: message)
-         print("*** leave \(region.identifier) ****")
+         print("*** leave \(region.identifier  ?? "") ****")
 
     }
 
