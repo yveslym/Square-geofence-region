@@ -27,46 +27,55 @@ public extension RegionProtocol{
     func updateRegion(location: CLLocation){
 
         // check if the current location is within the square region
-        let defaults = UserDefaults.standard
-        if let regions = defaults.value(forKey: "regions") as? [CKSquareRegion]{
+
+        if let regions = retrieveRegions(){
 
             regions.forEach { (region) in
 
+                let RegionLocation = CLLocation.init(latitude: region.latitude, longitude: region.longitude)
+                let distance = location.distance(from: RegionLocation)
+                print("\(distance.rounded())m to \(region.identifierR)")
 
-                if (region.contains(location.coordinate)){
+                let sqRegion = CKSquareRegion.init(ckregion: region)
+
+                // enter in the region
+                if sqRegion.contains(location.coordinate){
 
 
                     let defaults = UserDefaults.standard
-                    if let inSide = defaults.value(forKey: "inside") as? Bool {
+
+                    // retrieve the last state
+                    if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
 
                         if !inSide{
                             didEnterRegion(region: region)
-                            defaults.set(true, forKey: "inside")
+                            defaults.set(true, forKey: sqRegion.identifier)
                         }
                     }
 
                     else{
-                        didEnterRegion(region: region)
-                        defaults.set(true, forKey: "inside")
+                        //didEnterRegion(region: region)
+                        defaults.set(true, forKey: sqRegion.identifier)
                     }
 
                 }
                 else{
 
                     let defaults = UserDefaults.standard
-                    if let inSide = defaults.value(forKey: "inside") as? Bool {
+                    if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
                         if inSide{
                             didExitRegion(region: region)
-                            defaults.set(false, forKey: "inside")
+                            defaults.set(false, forKey: sqRegion.identifier)
                         }
                     }
                     else{
-                        didExitRegion(region: region)
-                        defaults.set(false, forKey: "inside")
+                        //didExitRegion(region: region)
+                        defaults.set(false, forKey: sqRegion.identifier)
                     }
                 }
             }
         }
+         print("\n ------------------------------")
     }
 
     private func retrieveRegions() -> [SquaredRegion]?{
@@ -86,20 +95,18 @@ public extension RegionProtocol{
         // TODO: - retrieve all the region from user default
         //       - if not exist create a new list
         // TODO: add new the region to the list of identifiers
-//        let defaults = UserDefaults.standard
-//
-//        if var regions = defaults.value(forKey: "regions") as? [CKSquareRegion]{
-//            regions.append(region)
-//            defaults.set(regions, forKey: "regions")
-//        }
-//        else{
-//            defaults.set([region], forKey: "regions")
-//        }
+         let newRegion = SquaredRegion.init(region: region)
         if var regions = retrieveRegions(){
-            //let newRegion = SquaredRegion
-            regions.append(region as! SquaredRegion)
 
-            let data = try! JSONEncoder().encode(regions)
+            regions.append(newRegion)
+
+            let data =  try! JSONEncoder().encode(regions)
+            UserDefaults.standard.set( data, forKey: "regionData")
+        }
+        else {
+            let newRegion = SquaredRegion.init(region: region)
+            let data = try! JSONEncoder().encode([newRegion])
+            UserDefaults.standard.set( data, forKey: "regionData")
         }
     }
 
@@ -121,17 +128,36 @@ public extension RegionProtocol{
 }
 
 public class SquaredRegion: CKSquareRegion, Codable{
+
+    public var longitude: Double
+    public var latitude: Double
+    public var identifierR: String
+    public let sideLenghR: CLLocationDistance
+
     override init!(regionWithCenter center: CLLocationCoordinate2D, sideLength: CLLocationDistance, identifier: String!) {
+         identifierR = identifier
+        sideLenghR = 0.0
+        longitude = center.longitude
+        latitude = center.latitude
         super.init(regionWithCenter: center, sideLength: sideLength, identifier: identifier)
+
     }
     public init(region: CKSquareRegion) {
 
-        
+        //centerR = region.center
+        sideLenghR = region.sideLengh
+        identifierR = region.identifier
+        longitude = region.center.longitude
+        latitude = region.center.latitude
+
         super.init(regionWithCenter: region.center, sideLength: region.sideLengh, identifier: region.identifier)
+
     }
 }
+
 extension CKSquareRegion{
     public convenience init(ckregion: SquaredRegion) {
-        self.init(regionWithCenter: ckregion.center, sideLength: ckregion.sideLengh, identifier: ckregion.identifier)
+       let center = CLLocationCoordinate2D.init(latitude: ckregion.latitude, longitude: ckregion.longitude)
+        self.init(regionWithCenter: center, sideLength: ckregion.sideLenghR, identifier: ckregion.identifierR)
     }
 }

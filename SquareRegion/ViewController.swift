@@ -55,11 +55,13 @@ class ViewController: UIViewController {
         mapView = MKMapView.init(frame: view.frame)
         mapView.delegate = self
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
+
         view.addSubview(mapView)
         mapView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1).isActive = true
          mapView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
-
+        let region = MKCoordinateRegion.init(center:  CLLocationCoordinate2D.init(latitude:  37.788381, longitude:  -122.408937), latitudinalMeters: 100, longitudinalMeters: 100)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        mapView.userTrackingMode = .follow
     }
     func setupLocation(){
         // setup locationManager
@@ -75,23 +77,24 @@ class ViewController: UIViewController {
 
     func setupData(){
 
-        // Make anotation
+
 
         let steakHouseCoordinate = CLLocationCoordinate2D.init(latitude:  37.788381, longitude:  -122.408937)
 
-        let bankCoordinate = CLLocationCoordinate2D.init(latitude:  37.788891, longitude:  -122.408790)
+
+        let bankCoordinate = CLLocationCoordinate2D.init(latitude:   37.788867, longitude: -122.408769)
 
         let nailSalonCoordinate = CLLocationCoordinate2D.init(latitude: 37.789302, longitude: -122.408985)
 
         // setup regions
-        let steakHouseRegion = CKSquareRegion.init(regionWithCenter: steakHouseCoordinate, sideLength: 0.035, identifier: "steakHouse")
-        let bankRegion = CKSquareRegion.init(regionWithCenter: bankCoordinate, sideLength: 0.035, identifier: "bank")
+        let steakHouseRegion = CKSquareRegion.init(regionWithCenter: steakHouseCoordinate, sideLength: 0.025, identifier: "steakHouse")
+        let bankRegion = CKSquareRegion.init(regionWithCenter: bankCoordinate, sideLength: 0.025, identifier: "bank")
         let nailSalonRegion =  CKSquareRegion.init(regionWithCenter: nailSalonCoordinate, sideLength: 0.025, identifier: "nailSalon")
 
         // add region to monitor
-        regionDelegate.addRegionToMonitor(region: steakHouseRegion!)
-        regionDelegate.addRegionToMonitor(region: bankRegion!)
-        regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
+//        regionDelegate.addRegionToMonitor(region: steakHouseRegion!)
+//        regionDelegate.addRegionToMonitor(region: bankRegion!)
+//        regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
 
 
         let steakHousePoint = [
@@ -133,6 +136,12 @@ class ViewController: UIViewController {
 
         mapView.addAnnotations([steakHouseAnnotation,bankAnnotation,nailSalonAnnotation])
 
+            // add location to monitor
+//          regionDelegate.addRegionToMonitor(region: steakHouseRegion!)
+//          regionDelegate.addRegionToMonitor(region: nailSalonRegion!)
+//          regionDelegate.addRegionToMonitor(region: bankRegion!)
+
+
     }
 }
 
@@ -150,18 +159,24 @@ extension ViewController: MKMapViewDelegate{
 extension ViewController: CLLocationManagerDelegate{
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-
+        if let location = locations.first{
+        regionDelegate.updateRegion(location: location)
+        }
     }
 }
 extension ViewController: RegionProtocol{
 
     func didEnterRegion(region: CKSquareRegion) {
-
+        let reg = region as! SquaredRegion
+        let message = "welcome to \(reg.identifierR )"
+        Helpers.showAlert("enter region", sender: self, message: message)
     }
 
     func didExitRegion(region: CKSquareRegion) {
 
+         let reg = region as! SquaredRegion
+        let message = "\(reg.identifierR) was happy to see you too, Bye"
+        Helpers.showAlert("leave region", sender: self, message: message)
 
     }
 

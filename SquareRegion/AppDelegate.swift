@@ -16,19 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        let steakHouseCoordinate = CLLocationCoordinate2D.init(latitude:  37.788381, longitude:  -122.408937)
-
-        // setup regions
-        let steakHouseRegion = CKSquareRegion.init(regionWithCenter: steakHouseCoordinate, sideLength: 0.035, identifier: "steakHouse")
-
-        var regions = [SquaredRegion]()
-        let reg = SquaredRegion.init(region: steakHouseRegion!)
-        let ckr = CKSquareRegion.init(ckregion: reg)
-        regions.append(reg)
-        print(regions.first?.sideLengh)
-
-
         return true
     }
 
@@ -52,6 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+        
     }
 
 

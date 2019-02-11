@@ -30,6 +30,7 @@
 		2014AF95220E06BF00890F8B /* CKSquareRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSquareRegion.h; sourceTree = "<group>"; };
 		2014AF97220E076E00890F8B /* RegionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProtocol.swift; sourceTree = "<group>"; };
 		206AF09B220FAB53006935C3 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		206AF09D22112873006935C3 /* LocationPostStreet.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationPostStreet.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 				2014AF88220E059200890F8B /* LaunchScreen.storyboard */,
 				2014AF8B220E059200890F8B /* Info.plist */,
 				206AF09B220FAB53006935C3 /* Helpers.swift */,
+				206AF09D22112873006935C3 /* LocationPostStreet.gpx */,
 			);
 			path = SquareRegion;
 			sourceTree = "<group>";

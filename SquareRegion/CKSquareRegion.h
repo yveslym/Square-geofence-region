@@ -27,7 +27,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
-@interface CKSquareRegion : NSCoder
+@interface CKSquareRegion : NSObject
 
 // Center coordinate of the square region
 @property (nonatomic, readonly) CLLocationCoordinate2D center;
