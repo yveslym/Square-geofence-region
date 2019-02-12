@@ -34,7 +34,7 @@ public extension RegionProtocol{
             for (_, region) in regions {
                 let RegionLocation = CLLocation.init(latitude: region.latitude, longitude: region.longitude)
                 let distance = location.distance(from: RegionLocation)
-                print("\(distance.rounded()) m to \(region.identifierR)")
+
 
                 let sqRegion = CKSquareRegion.init(ckregion: region)
 
@@ -75,7 +75,7 @@ public extension RegionProtocol{
                 }
             }
         }
-         print("\n ------------------------------")
+       
     }
 
     private func retrieveRegions() -> [String:CodableSquareRegion]?{
