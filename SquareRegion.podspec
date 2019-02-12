@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SquareRegion'
-  s.version          = '1.0.3.1'
+  s.version          = '1.0.3.2'
   s.summary          = 'powerful  and efficient, lightweight iOS square region location for Geofence, alternative to circular region'
  s.swift_version    = '4.2'
   s.description      = <<-DESC
