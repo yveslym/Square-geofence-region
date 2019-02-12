@@ -7,7 +7,8 @@ square region geofence is a lightweight geofence pod that allows you to cfreate 
 ## Demo
 
 
-![demo](https://imgur.com/emKNAoy.gif)
+
+![](Gif/demo.gif)
 
 
 
@@ -27,7 +28,7 @@ pod install
 
 
 
-1. import 
+1. import
 ```
 import SquareRegion
 ```
@@ -84,10 +85,10 @@ extension   ViewController: SquareRegionProtocol {
 ```
 let center =  CLLocationCoordinate2D.init(latitude: 37.787689, longitude: -122.410929)
 
-// length is in kilometers, 
+// length is in kilometers,
 //so you need to convert to meters
 // for this exemple it is 35 meters
-  let length =  0.035 
+  let length =  0.035
 
 
 let squareRegion = CKSquareRegion.init(regionWithCenter: center, sideLength: length, identifier: "steakHouse")
