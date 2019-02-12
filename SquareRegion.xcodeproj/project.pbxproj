@@ -25,7 +25,7 @@
 		2014AF86220E059200890F8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2014AF89220E059200890F8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2014AF8B220E059200890F8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2014AF93220E06BE00890F8B /* Square geofence region-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Square geofence region-Bridging-Header.h"; sourceTree = "<group>"; };
+		2014AF93220E06BE00890F8B /* SquareRegion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SquareRegion.h; sourceTree = "<group>"; };
 		2014AF94220E06BF00890F8B /* CKSquareRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSquareRegion.m; sourceTree = "<group>"; };
 		2014AF95220E06BF00890F8B /* CKSquareRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSquareRegion.h; sourceTree = "<group>"; };
 		2014AF97220E076E00890F8B /* RegionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProtocol.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 			children = (
 				2014AF95220E06BF00890F8B /* CKSquareRegion.h */,
 				2014AF94220E06BF00890F8B /* CKSquareRegion.m */,
-				2014AF93220E06BE00890F8B /* Square geofence region-Bridging-Header.h */,
+				2014AF93220E06BE00890F8B /* SquareRegion.h */,
 				2014AF97220E076E00890F8B /* RegionProtocol.swift */,
 				2014AF92220E067900890F8B /* Models */,
 				2014AF91220E065F00890F8B /* Protocol */,
@@ -330,7 +330,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Square geofence region-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = SquareRegion/SquareRegion.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -352,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SquareRegion/Square geofence region-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = SquareRegion/SquareRegion.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
