@@ -7,14 +7,13 @@ square region geofence is a lightweight geofence pod that allows you to cfreate 
 ## Demo
 
 
-
-![demo](https://i.imgur.com/oIOMh5s.gif)
+![demo](https://imgur.com/bCSC3mr.gif)
 
 
 
 ## Installing with CocoaPods
 
-1. Add the following line to your Podfile:
+1. Add the pod SquareRegion to your Podfile:
 
 ```
 pod 'SquareRegion'
@@ -56,17 +55,8 @@ delegate = self
 func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
 if let location = locations.first{
-let center =  CLLocationCoordinate2D.init(latitude: 37.787689, longitude: -122.410929)
 
-// length is in kilometers, 
-//so you need to convert to meters
-// for this exemple it is 35 meters
-  let length =  0.035 
-
-
-let squareRegion = CKSquareRegion.init(regionWithCenter: center, sideLength: length, identifier: "myIdentifier")
-
-delegate.updateRegion(region: squareRegion!, location: location)
+delegate.updateRegion(location: location)
 
     }
 }
@@ -89,10 +79,31 @@ extension   ViewController: SquareRegionProtocol {
 }
 ```
 
+6. Add and remove region
+
+```
+let center =  CLLocationCoordinate2D.init(latitude: 37.787689, longitude: -122.410929)
+
+// length is in kilometers, 
+//so you need to convert to meters
+// for this exemple it is 35 meters
+  let length =  0.035 
+
+
+let squareRegion = CKSquareRegion.init(regionWithCenter: center, sideLength: length, identifier: "steakHouse")
+
+// Add region
+delegate.addRegionToMonitor(region: squareRegion!)
+
+// remove region
+delegate..removeRegionFromMonitor(identifier: "steakHouse")
+
+```
 ## Note:
 
-The sideLength is in kilometers, so you will have to convert to meters
+* The sideLength is in kilometers, so you will have to convert to meters
 
+* you can monitor more than one location
 ## License
 
 MIT License

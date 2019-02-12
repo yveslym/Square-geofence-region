@@ -119,7 +119,7 @@ class ViewController: UIViewController {
         let nailSalonPolygon = MKPolygon.init(coordinates: nailSalonPoint, count: 4)
 
         mapView.addOverlays([bankPolygon,nailSalonPolygon,steakHousePolygon])
-
+        
 
         // setup anotation
         let steakHouseAnnotation = MKPointAnnotation()
