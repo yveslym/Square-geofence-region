@@ -18,6 +18,8 @@ class ViewController: UIViewController {
 
     var mapView: MKMapView!
 
+    /// This is the example project
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
