@@ -97,7 +97,7 @@ let squareRegion = CKSquareRegion.init(regionWithCenter: center, sideLength: len
 delegate.addRegionToMonitor(region: squareRegion!)
 
 // remove region
-delegate..removeRegionFromMonitor(identifier: "steakHouse")
+delegate.removeRegionFromMonitor(identifier: "steakHouse")
 
 ```
 ## Note:
