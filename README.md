@@ -107,4 +107,4 @@ delegate.removeRegionFromMonitor(identifier: "steakHouse")
 * you can monitor more than one location
 ## License
 
-MIT License
+![MIT License](https://github.com/yveslym/Square-geofence-region/blob/master/LICENSE)
