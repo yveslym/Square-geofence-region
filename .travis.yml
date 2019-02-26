@@ -1,5 +1,20 @@
-language: objective-c  
-osx_image: xcode10 
-xcode_project: SquareRegion.xcodeproj
-xcode_scheme: SquareRegion 
-xcode_sdk: iphonesimulator8 
+# language: objective-c  
+# osx_image: xcode10 
+# xcode_project: SquareRegion.xcodeproj
+# xcode_scheme: SquareRegion 
+# xcode_sdk: iphonesimulator8 
+
+# 1
+language: swift
+
+# 2
+script: xcodebuild -workspace TravisExample.xcworkspace -scheme TravisExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+script: xcodebuild test -workspace TravisExample.xcworkspace -scheme TravisExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
+# 3
+script: xctool test -workspace TravisExample.xcworkspace -scheme TravisExampleTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
+# 4
+script: 
+  - xcodebuild build-for-testing -workspace SquareRegion.xcodeproj -scheme SquareRegion -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  #- xctool run-tests -workspace TravisExample.xcworkspace -scheme TravisExampleTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
