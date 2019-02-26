@@ -1,8 +1,12 @@
-version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/ruby:2.4.1
+  build-and-test:
+    macos:
+      xcode: "9.3.0"
     steps:
-      - checkout
-      - run: echo "A first hello"
+      ...
+      - run:
+          name: Run tests
+          command: fastlane scan
+          environment:
+            SCAN_DEVICE: iPhone 8
+            SCAN_SCHEME: WebTests
