@@ -2,4 +2,4 @@ language: objective-c
 osx_image: xcode10 
 xcode_project: SquareRegion.xcodeproj
 xcode_scheme: SquareRegion 
-xcode_sdk: iphonesimulator8.4 
+xcode_sdk: iphonesimulator8 
