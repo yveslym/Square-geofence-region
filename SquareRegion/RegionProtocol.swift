@@ -39,7 +39,7 @@ public extension RegionProtocol{
                 let sqRegion = CKSquareRegion.init(ckregion: region)
 
                 // enter in the region
-                if sqRegion.contains(location.coordinate) && distance < (region.sideLenghR * 1000) && region.entryRegion {
+                if sqRegion.contains(location.coordinate) && distance < (region.sideLenghR * 1000) {
 
                     let defaults = UserDefaults.standard
 
@@ -47,7 +47,8 @@ public extension RegionProtocol{
                     if let inSide = defaults.value(forKey: region.identifierR) as? Bool {
 
                         if !inSide{
-                            didEnterRegion(region: sqRegion)
+                            if region.entryRegion {  didEnterRegion(region: sqRegion) }
+                           
                             defaults.set(true, forKey: region.identifierR)
                         }
                     }
@@ -59,13 +60,13 @@ public extension RegionProtocol{
 
                 }
                     
-                else if region.exitRegion == true {
-                    
+                else {
+                   
                     // check wether the exit should be monitor or not
                     let defaults = UserDefaults.standard
                     if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
                         if inSide {
-                            didExitRegion(region: sqRegion)
+                            if region.exitRegion { didExitRegion(region: sqRegion) }
                             defaults.set(false, forKey: sqRegion.identifier)
                         }
                     }
@@ -129,7 +130,7 @@ public extension RegionProtocol{
     }
 }
 
-public class YVSquareRegion: CKSquareRegion, Codable{
+fileprivate class YVSquareRegion: CKSquareRegion, Codable{
 
     public var longitude: Double
     public var latitude: Double
@@ -167,7 +168,7 @@ public class YVSquareRegion: CKSquareRegion, Codable{
 }
 
 extension CKSquareRegion{
-    public convenience init(ckregion: YVSquareRegion) {
+     fileprivate convenience init(ckregion: YVSquareRegion) {
        let center = CLLocationCoordinate2D.init(latitude: ckregion.latitude, longitude: ckregion.longitude)
         self.init(regionWithCenter: center, sideLength: ckregion.sideLenghR, identifier: ckregion.identifierR, onEntry: ckregion.entryRegion,onExit: ckregion.onExit)
     }

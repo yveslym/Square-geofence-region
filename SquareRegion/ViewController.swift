@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         // setup regions
         let steakHouseRegion = CKSquareRegion.init(regionWithCenter: steakHouseCoordinate, sideLength: 0.025, identifier: "steakHouse", onEntry: true, onExit: true)
         let bankRegion = CKSquareRegion.init(regionWithCenter: bankCoordinate, sideLength: 0.025, identifier: "bank", onEntry: false, onExit: true)
-        let nailSalonRegion =  CKSquareRegion.init(regionWithCenter: nailSalonCoordinate, sideLength: 0.025, identifier: "nailSalon", onEntry: false, onExit: false)
+        let nailSalonRegion =  CKSquareRegion.init(regionWithCenter: nailSalonCoordinate, sideLength: 0.025, identifier: "nailSalon", onEntry: true, onExit: false)
 
 
         // add region to monitor
