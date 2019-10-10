@@ -44,12 +44,14 @@
 @synthesize center = _center;
 @synthesize identifier = _identifier;
 @synthesize sideLengh = _sideLengh;
+@synthesize onEntry = _onEntry;
+@synthesize onExit = _onExit;
 @synthesize maxLat = _maxLat;
 @synthesize minLat = _minLat;
 @synthesize maxLng = _maxLng;
 @synthesize minLng = _minLng;
 
-- (id)initRegionWithCenter:(CLLocationCoordinate2D)center sideLength:(CLLocationDistance )sideLength identifier:(NSString *)identifier
+- (id)initRegionWithCenter:(CLLocationCoordinate2D)center sideLength:(CLLocationDistance)sideLength identifier:(NSString *)identifier onEntry:(BOOL)onEntry onExit:(BOOL)onExit;
 {
     self = [super init];
     if (self){
@@ -57,6 +59,9 @@
         _center = center;
         _identifier = identifier;
         _sideLengh = sideLength;
+        _onEntry = onEntry;
+        _onExit = onExit;
+        
         
         // Store the angular distance of each side from the center
         double angDist = sideLength / kEARTH_RADIUS_KM / 2;

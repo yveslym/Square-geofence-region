@@ -327,7 +327,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region-";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = SquareRegion/SquareRegion.h;
@@ -349,7 +349,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yveslym.Square-geofence-region-";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = SquareRegion/SquareRegion.h;

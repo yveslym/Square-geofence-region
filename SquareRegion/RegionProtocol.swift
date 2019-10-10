@@ -39,31 +39,32 @@ public extension RegionProtocol{
                 let sqRegion = CKSquareRegion.init(ckregion: region)
 
                 // enter in the region
-                if sqRegion.contains(location.coordinate) && distance < (sqRegion.sideLengh * 1000){
-
+                if sqRegion.contains(location.coordinate) && distance < (region.sideLenghR * 1000) && region.entryRegion {
 
                     let defaults = UserDefaults.standard
 
                     // retrieve the last status
-                    if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
+                    if let inSide = defaults.value(forKey: region.identifierR) as? Bool {
 
                         if !inSide{
                             didEnterRegion(region: sqRegion)
-                            defaults.set(true, forKey: sqRegion.identifier)
+                            defaults.set(true, forKey: region.identifierR)
                         }
                     }
 
                     else{
 
-                        defaults.set(true, forKey: sqRegion.identifier)
+                        defaults.set(true, forKey: region.identifier)
                     }
 
                 }
-                else{
-
+                    
+                else if region.exitRegion == true {
+                    
+                    // check wether the exit should be monitor or not
                     let defaults = UserDefaults.standard
                     if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
-                        if inSide{
+                        if inSide {
                             didExitRegion(region: sqRegion)
                             defaults.set(false, forKey: sqRegion.identifier)
                         }
@@ -78,10 +79,10 @@ public extension RegionProtocol{
        
     }
 
-    private func retrieveRegions() -> [String:CodableSquareRegion]?{
+    private func retrieveRegions() -> [String:YVSquareRegion]?{
         if let data = UserDefaults.standard.value(forKey: "regionData") as? Data{
             do{
-                let regions = try JSONDecoder().decode([String:CodableSquareRegion].self, from: data)
+                let regions = try JSONDecoder().decode([String:YVSquareRegion].self, from: data)
 
                 return regions
             }
@@ -96,7 +97,7 @@ public extension RegionProtocol{
         // TODO: - retrieve all the region from user default
         //       - if not exist create a new list
         // TODO: add new the region to the list of identifiers
-         let newRegion = CodableSquareRegion.init(region: region)
+        let newRegion = YVSquareRegion(region: region)
         if var regions = retrieveRegions(){
 
             regions[newRegion.identifierR] = newRegion
@@ -105,7 +106,7 @@ public extension RegionProtocol{
             UserDefaults.standard.set( data, forKey: "regionData")
         }
         else {
-            let newRegion = CodableSquareRegion.init(region: region)
+            let newRegion = YVSquareRegion.init(region: region)
 
             let data = try! JSONEncoder().encode([newRegion.identifierR:newRegion])
             UserDefaults.standard.set( data, forKey: "regionData")
@@ -128,19 +129,26 @@ public extension RegionProtocol{
     }
 }
 
-public class CodableSquareRegion: CKSquareRegion, Codable{
+public class YVSquareRegion: CKSquareRegion, Codable{
 
     public var longitude: Double
     public var latitude: Double
     public var identifierR: String
     public let sideLenghR: CLLocationDistance
+    public var entryRegion: Bool
+    public var exitRegion: Bool
 
-    override init!(regionWithCenter center: CLLocationCoordinate2D, sideLength: CLLocationDistance, identifier: String!) {
+    override init!(regionWithCenter center: CLLocationCoordinate2D, sideLength: CLLocationDistance, identifier: String!, onEntry: Bool, onExit: Bool) {
+        
          identifierR = identifier
-        sideLenghR = 0.0
+        sideLenghR = sideLength
         longitude = center.longitude
         latitude = center.latitude
-        super.init(regionWithCenter: center, sideLength: sideLength, identifier: identifier)
+        self.entryRegion = onEntry
+        self.exitRegion = onExit
+        
+        super.init(regionWithCenter: center, sideLength: sideLength, identifier: identifier, onEntry: onEntry, onExit: onExit)
+        //super.init(regionWithCenter: center, sideLength: sideLength, identifier: identifier)
 
     }
     public init(region: CKSquareRegion) {
@@ -150,15 +158,17 @@ public class CodableSquareRegion: CKSquareRegion, Codable{
         identifierR = region.identifier
         longitude = region.center.longitude
         latitude = region.center.latitude
-
-        super.init(regionWithCenter: region.center, sideLength: region.sideLengh, identifier: region.identifier)
+        self.entryRegion = region.onEntry
+        self.exitRegion = region.onExit
+        
+        super.init(regionWithCenter: region.center, sideLength: region.sideLengh, identifier: region.identifier, onEntry: region.onEntry, onExit: region.onExit)
 
     }
 }
 
 extension CKSquareRegion{
-    public convenience init(ckregion: CodableSquareRegion) {
+    public convenience init(ckregion: YVSquareRegion) {
        let center = CLLocationCoordinate2D.init(latitude: ckregion.latitude, longitude: ckregion.longitude)
-        self.init(regionWithCenter: center, sideLength: ckregion.sideLenghR, identifier: ckregion.identifierR)
+        self.init(regionWithCenter: center, sideLength: ckregion.sideLenghR, identifier: ckregion.identifierR, onEntry: ckregion.entryRegion,onExit: ckregion.onExit)
     }
 }

@@ -89,9 +89,9 @@ class ViewController: UIViewController {
         let nailSalonCoordinate = CLLocationCoordinate2D.init(latitude: 37.789302, longitude: -122.408985)
 
         // setup regions
-        let steakHouseRegion = CKSquareRegion.init(regionWithCenter: steakHouseCoordinate, sideLength: 0.025, identifier: "steakHouse")
-        let bankRegion = CKSquareRegion.init(regionWithCenter: bankCoordinate, sideLength: 0.025, identifier: "bank")
-        let nailSalonRegion =  CKSquareRegion.init(regionWithCenter: nailSalonCoordinate, sideLength: 0.025, identifier: "nailSalon")
+        let steakHouseRegion = CKSquareRegion.init(regionWithCenter: steakHouseCoordinate, sideLength: 0.025, identifier: "steakHouse", onEntry: true, onExit: true)
+        let bankRegion = CKSquareRegion.init(regionWithCenter: bankCoordinate, sideLength: 0.025, identifier: "bank", onEntry: false, onExit: true)
+        let nailSalonRegion =  CKSquareRegion.init(regionWithCenter: nailSalonCoordinate, sideLength: 0.025, identifier: "nailSalon", onEntry: false, onExit: false)
 
 
         // add region to monitor
