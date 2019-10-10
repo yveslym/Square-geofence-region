@@ -39,23 +39,23 @@ public extension RegionProtocol{
                 let sqRegion = CKSquareRegion.init(ckregion: region)
 
                 // enter in the region
-                if sqRegion.contains(location.coordinate) && distance < (region.sideLenghR * 1000) {
+                if sqRegion.contains(location.coordinate) && distance < (sqRegion.sideLengh * 1000) {
 
                     let defaults = UserDefaults.standard
 
                     // retrieve the last status
-                    if let inSide = defaults.value(forKey: region.identifierR) as? Bool {
+                    if let inSide = defaults.value(forKey: sqRegion.identifier) as? Bool {
 
                         if !inSide{
                             if region.entryRegion {  didEnterRegion(region: sqRegion) }
                            
-                            defaults.set(true, forKey: region.identifierR)
+                            defaults.set(true, forKey: sqRegion.identifier)
                         }
                     }
 
                     else{
 
-                        defaults.set(true, forKey: region.identifier)
+                        defaults.set(true, forKey: sqRegion.identifier)
                     }
 
                 }
