@@ -35,13 +35,13 @@ import SquareRegion
 2. Set Delegate
 
 ```
-class   ViewController: UIViewController, SquareRegionProtocol, CLLocationManagerDelegate
+class   ViewController: UIViewController, SquareRegionDelegate, CLLocationManagerDelegate
 {
 ```
 3. Initialize
 
 ```
-var delegate : SquareRegionProtocol
+var delegate : SquareRegionDelegate
 ```
 > On viewDidload
 
@@ -62,10 +62,10 @@ delegate.updateRegion(location: location)
 }
 
 ```
-5. Implement the SquareRegionProtocol delegate method
+5. Implement the SquareRegionDelegate delegate method
 
 ```
-extension   ViewController: SquareRegionProtocol {
+extension   ViewController: SquareRegionDelegate {
 
   func didEnterRegion(region: CKSquareRegion) {
 
