@@ -68,8 +68,6 @@
 				2014AF94220E06BF00890F8B /* CKSquareRegion.m */,
 				2014AF93220E06BE00890F8B /* SquareRegion.h */,
 				2014AF97220E076E00890F8B /* RegionProtocol.swift */,
-				2014AF92220E067900890F8B /* Models */,
-				2014AF91220E065F00890F8B /* Protocol */,
 				2014AF7F220E058F00890F8B /* AppDelegate.swift */,
 				2014AF81220E058F00890F8B /* ViewController.swift */,
 				2014AF83220E058F00890F8B /* Main.storyboard */,
@@ -81,20 +79,6 @@
 				206AF09E22122F1F006935C3 /* LocationSutter.gpx */,
 			);
 			path = SquareRegion;
-			sourceTree = "<group>";
-		};
-		2014AF91220E065F00890F8B /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		2014AF92220E067900890F8B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
