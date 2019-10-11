@@ -42,7 +42,6 @@ class   ViewController: UIViewController, SquareRegionProtocol, CLLocationManage
 
 ```
 var delegate : SquareRegionProtocol
-
 ```
 > On viewDidload
 
