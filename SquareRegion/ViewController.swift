@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
     var locationManager: CLLocationManager!
 
-    var regionDelegate: RegionProtocol!
+    var regionDelegate: SquareRegionDelegate!
 
     var mapView: MKMapView!
 
@@ -159,7 +159,7 @@ extension ViewController: CLLocationManagerDelegate{
         }
     }
 }
-extension ViewController: RegionProtocol{
+extension ViewController: SquareRegionDelegate{
 
     func didEnterRegion(region: CKSquareRegion) {
 
